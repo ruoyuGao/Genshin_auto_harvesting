@@ -60,6 +60,6 @@ We plan to update this project for a long time. The ultimate goal is to successf
  - [ ] try to find more efficent algorithm to upgrade our agent
 
 ## v0.1
- - Realized the harvesting function of agents in the Mond Plain
+ - achieved the harvesting function of agents in the Mond Plain(we desigend all the basic setting that our agent can work on it now)
  - Implemented an interface that can be used to capture human behavior
 
