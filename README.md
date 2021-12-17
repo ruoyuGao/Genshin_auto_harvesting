@@ -1,7 +1,7 @@
 # Introduction
 genshin automatic harvesting AI is composed of [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX), DQN two-part model. Use transfer learning, semi-supervised learning for training.We use yolox to detect the pixel coordinates of characters and items in the picture, and convert this information into our custom state information, and use DQN to make decisions.
 
-<iframe src="//player.bilibili.com/player.html?aid=634923722&bvid=BV1Kb4y1v7Zx&cid=463179101&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+our video demo: [demo](https://www.bilibili.com/video/BV1Kb4y1v7Zx?spm_id_from=333.999.0.0)
 
 # Install
 Install [anaconda](https://www.anaconda.com/products/individual#Downloads), configure the virtual environment
@@ -41,10 +41,10 @@ The command line window must be started with <font color=#66CCFF>**Administrator
 
 Running on gpu
 ```shell
-python ./tools/harvesting.py image -n yolox-s -f .\exps\example\yolox_voc\yolox_voc_s.py -c .\YOLOX_outputs\yolox_voc_s\latest_ckpt.pth --conf 0.25 --nms 0.45 --tsize 640 --device gpu 
+python .\tools\harvesting.py image -n yolox-s -f .\exps\example\yolox_voc\yolox_voc_s.py -c .\YOLOX_outputs\yolox_voc_s\latest_ckpt.pth --conf 0.25 --nms 0.45 --tsize 640 --device gpu 
 ```
 Running on cpu
 ```shell
-python ./tools/harvesting.py image -n yolox-s -f .\exps\example\yolox_voc\yolox_voc_s.py -c .\YOLOX_outputs\yolox_voc_s\latest_ckpt.pth --conf 0.25 --nms 0.45 --tsize 640 --device gpu 
+python .\tools\harvesting.py image -n yolox-s -f .\exps\example\yolox_voc\yolox_voc_s.py -c .\YOLOX_outputs\yolox_voc_s\latest_ckpt.pth --conf 0.25 --nms 0.45 --tsize 640 --device gpu 
 ```
 When you see, every thing is ok, press r to start the agent
