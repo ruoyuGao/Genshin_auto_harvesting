@@ -103,7 +103,7 @@ class Predictor(object):
         self.model = model
         self.cls_names = cls_names
         self.decoder = decoder
-        self.num_classes = 80
+        self.num_classes = 7
         self.confthre = confthre
         self.nmsthre = nmsthre
         self.test_size = test_size

@@ -18,7 +18,15 @@ from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
 IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
 
-
+ITEM_CLASSES = (
+    "player",
+    "Windwheel Aster",
+    "Snapdragon",
+    "mint",
+    "sweet flower",
+    "mushroom",
+    "Berry",
+)
 def make_parser():
     parser = argparse.ArgumentParser("YOLOX Demo!")
     parser.add_argument(
@@ -102,7 +110,7 @@ class Predictor(object):
         self,
         model,
         exp,
-        cls_names=COCO_CLASSES,
+        cls_names=ITEM_CLASSES,
         trt_file=None,
         decoder=None,
         device="cpu",
@@ -216,7 +224,7 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
     )
     os.makedirs(save_folder, exist_ok=True)
     if args.demo == "video":
-        save_path = os.path.join(save_folder, args.path.split("/")[-1])
+        save_path = os.path.join(save_folder, args.path.split("\\")[-1])
     else:
         save_path = os.path.join(save_folder, "camera.mp4")
     logger.info(f"video save_path is {save_path}")

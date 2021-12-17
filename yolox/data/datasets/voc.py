@@ -64,7 +64,7 @@ class AnnotationTransform(object):
             pts = ["xmin", "ymin", "xmax", "ymax"]
             bndbox = []
             for i, pt in enumerate(pts):
-                cur_pt = int(bbox.find(pt).text) - 1
+                cur_pt = int(float(bbox.find(pt).text)) - 1
                 # scale height or width
                 # cur_pt = cur_pt / width if i % 2 == 0 else cur_pt / height
                 bndbox.append(cur_pt)
@@ -102,8 +102,8 @@ class VOCDetection(Dataset):
     def __init__(
         self,
         data_dir,
-        image_sets=[("2007", "trainval"), ("2012", "trainval")],
-        img_size=(416, 416),
+        image_sets=[("2007", "train"), ("2012", "test")],
+        img_size=(1920, 1080),
         preproc=None,
         target_transform=AnnotationTransform(),
         dataset_name="VOC0712",
@@ -313,7 +313,7 @@ class VOCDetection(Dataset):
     def _do_python_eval(self, output_dir="output", iou=0.5):
         rootpath = os.path.join(self.root, "VOC" + self._year)
         name = self.image_set[0][1]
-        annopath = os.path.join(rootpath, "Annotations", "{:s}.xml")
+        annopath = os.path.join(rootpath, "Annotations") + "\\{:s}.xml"
         imagesetfile = os.path.join(rootpath, "ImageSets", "Main", name + ".txt")
         cachedir = os.path.join(
             self.root, "annotations_cache", "VOC" + self._year, name
