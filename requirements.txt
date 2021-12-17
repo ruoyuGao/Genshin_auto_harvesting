@@ -1,7 +1,0 @@
-# TODO: Update with exact module version
-ninja
-tensorboard
-
-# verified versions
-onnxruntime==1.8.0
-onnx-simplifier==0.3.5
