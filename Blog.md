@@ -28,8 +28,9 @@ To counter the issue that the states of the environment is too large to train, w
 - states: bounding boxes and names of the detected objects.
 - action: going forward, leftward, rightward, and downward.
 - reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0).
-- reset: when it reaches some number of steps (hyperparameter). 
+- reset: when it reaches some number of steps (hyperparameter).
 
 ### Problems
 
 1. Sometimes the YoloX would lose trace of the character because there could be bushes that blocks the view.
+
