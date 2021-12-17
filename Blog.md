@@ -18,6 +18,8 @@ In the first implementation, we choose our model to be DQN. We defined our envir
 - action: going forward, leftward, rightward, and downward.
 - reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0). [figure]
 
+For each action, we keep pressing the relevant key for one second. After each action is applied to the environment, we always press 'F', which would harvest if there is an item at the current location and do nothing if there is no item.  
+
 #### Problems
 
 1. The character may enter into states that cannot be solved by the defined actions. For example, the character might encounter enemies in the environment, and can only be resolved with a fight.
@@ -66,3 +68,13 @@ Here is the comparison between the comparison of the harvesting of:
 
 ## Discussion
 
+### Analysis of the results
+
+### Future improvement
+
+1. We could expand our dataset to improve the robustness of our model.
+1. Add detection of successful collection and thus achieve a better reward function. This can be done in either of the following ways:
+    - Run YoloX twice in the reward function. Compare the closest objects detected. If the closest object is gone while others remains the same, we could then conclude that the object has been collected.
+    - Add labeling for the character 'F' which comes out in the game when there is an item that can be collected. Thus, if we are able to detect the 'F', we could conclude that we have reach a place where an item can be collected.
+1. We could add a map as a parameter to the environment. The environment actually are not always the same. Items that we harvested would regenerate after a fixed amount of time. Adding a map would enable the model to keep track of the places that has been visited. Then, we could use a function that reduces the curiosity towards the explored area and increased area, and further decrease the curiosity whether items has been collected.
+1. Add a detection of special events that might come out during harvesting, such as encountering enemies or the action leads to climbing, which would make the actions different.
