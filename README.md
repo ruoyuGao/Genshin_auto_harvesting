@@ -1,8 +1,7 @@
 # Introduction
 genshin automatic harvesting AI is composed of [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX), DQN two-part model. Use transfer learning, semi-supervised learning for training.We use yolox to detect the pixel coordinates of characters and items in the picture, and convert this information into our custom state information, and use DQN to make decisions.
 
-[video(video-1pLm5o3U-1639772160968)(type-bilibili)(url-https://player.bilibili.com/player.html?aid=634923722)(image-https://img-blog.csdnimg.cn/img_convert/a0e12e99a2f2574e22cf58919bae661b.png)(title-AI automatic exploration and collection of materials (early version))]
-
+<iframe src="//player.bilibili.com/player.html?aid=634923722&bvid=BV1Kb4y1v7Zx&cid=463179101&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 # Install
 Install [anaconda](https://www.anaconda.com/products/individual#Downloads), configure the virtual environment
