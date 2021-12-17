@@ -8,29 +8,43 @@ Genshin Impact is an action role-playing game developed and published by miHoYo.
 
 In this game, different resources should be collected to upgrade your characters and weapons. It could be quite tedious to collect those items. Also, different kinds of resources requires different methods of collection. For the most common resources you can find them directly in the environment and press F to collet. Also shown in the video, for some resources you need to use specific skills to collect. For other resources you need to use elemental reactions to collect.
 
-## Implementation (version 1)
+## Implementation
+
+### version 1.0
 
 In the first implementation, we choose our model to be DQN. We defined our environment to be the following:
 
 - states: realtime image from the game.
 - action: going forward, leftward, rightward, and downward.
-- reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0). [TODO]
+- reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0). [figure]
 
-### Problems
+#### Problems
 
 1. The character may enter into states that cannot be solved by the defined actions. For example, the character might encounter enemies in the environment, and can only be resolved with a fight.
 1. The training process has hardly any improvement. We suspect the reason is because directly inputting the entire 1920X1080 picture into the DQN.
 
-## Implementation (version 2)
+### version 2.0
 
-To counter the issue that the states of the environment is too large to train, we chose to first process the high level image input into low-level data. We changed our model to be a two-stage model. The image of the game is first passed through YoloX. Then, we are able to get the low-level data:  the coordinates of the bounding box surrounding each detected object and the name of the detected object. Then, we passed the low-level data into the DQN. In this model, We defined our environment to be the following:
+1. To deal with the case that the character facing events that are not relevant to the scope of this project, we set a finite number of time steps. After countering undesired events, the environment would be reset after reaching the maximum time step.
+
+1. To counter the issue that the states of the environment is too large to train, we chose to first process the high level image input into low-level data. We changed our model to be a two-stage model. The image of the game is first passed through YoloX. Then, we are able to get the low-level data:  the coordinates of the bounding box surrounding each detected object and the name of the detected object. Then, we passed the low-level data into the DQN. In this model, We defined our environment to be the following:
 
 - states: bounding boxes and names of the detected objects.
 - action: going forward, leftward, rightward, and downward.
 - reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0).
 - reset: when it reaches some number of steps (hyperparameter).
 
-### Problems
+#### Problems
 
-1. Sometimes the YoloX would lose trace of the character because there could be bushes that blocks the view.
+1. Sometimes the YoloX would lose trace of the character because there could be bushes that blocks the view. [figure]
+1. The accuracy of YoloX is low. [figure]
+1. It is common that there is no available object to be collected in the view of the character. In this case, since YoloX returns nothing except the coordinate of the character to the DQN, it is impossible for the DQN to tell which direction to go, so this would result in a random action that might keep the character to wander around the same field. [demo]
 
+### version 2.1
+
+1. When the YoloX loses trace of the character, we continue stepping forward with small steps until the character can be detected by YoloX.
+1. 
+
+## Results
+
+## Discussion
