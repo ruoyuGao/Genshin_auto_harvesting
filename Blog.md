@@ -31,20 +31,38 @@ In the first implementation, we choose our model to be DQN. We defined our envir
 
 - states: bounding boxes and names of the detected objects.
 - action: going forward, leftward, rightward, and downward.
-- reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0).
+- reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0 by assuming the distance to the closest object is infinite).
 - reset: when it reaches some number of steps (hyperparameter).
 
 #### Problems
 
 1. Sometimes the YoloX would lose trace of the character because there could be bushes that blocks the view. [figure]
+
 1. The accuracy of YoloX is low. [figure]
+
 1. It is common that there is no available object to be collected in the view of the character. In this case, since YoloX returns nothing except the coordinate of the character to the DQN, it is impossible for the DQN to tell which direction to go, so this would result in a random action that might keep the character to wander around the same field. [demo]
 
 ### version 2.1
 
 1. When the YoloX loses trace of the character, we continue stepping forward with small steps until the character can be detected by YoloX.
-1. 
+
+1. When the view contains no object, the reward is set to 0 no matter what action is taken.
+
+AS a result, we defined our environment to be the following:
+
+- states: bounding boxes and names of the detected objects.
+- action: going forward, leftward, rightward, and downward.
+- reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0 by assuming the distance to the closest object is infinite).
+- reset: when it reaches some number of steps (hyperparameter).
 
 ## Results
 
+Here is the comparison between the comparison of the harvesting of:
+
+1. human
+1. version 1.0
+1. version 2.0
+1. version 2.1
+
 ## Discussion
+
