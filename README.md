@@ -48,3 +48,18 @@ Running on cpu
 python .\tools\harvesting.py image -n yolox-s -f .\exps\example\yolox_voc\yolox_voc_s.py -c .\YOLOX_outputs\yolox_voc_s\latest_ckpt.pth --conf 0.25 --nms 0.45 --tsize 640 --device gpu 
 ```
 When you see, every thing is ok, press r to start the agent
+
+# Version history
+We plan to update this project for a long time. The ultimate goal is to successfully collect various types of objects on different terrains.
+
+## v0.2(on the way)
+
+ - [ ] add new actions in our environment files(fly and attack)
+ - [ ] Add a curiosity auxiliary map to help the agent explore
+ - [ ] collect more data to Improve detection accuracy
+ - [ ] try to find more efficent algorithm to upgrade our agent
+
+## v0.1
+ - Realized the harvesting function of agents in the Mond Plain
+ - Implemented an interface that can be used to capture human behavior
+
