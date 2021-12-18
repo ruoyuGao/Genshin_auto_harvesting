@@ -64,3 +64,5 @@ We plan to update this project for a long time. The ultimate goal is to successf
  - achieved the harvesting function of agents in the Mond Plain(we desigend all the basic setting that our agent can work on it now)
  - Implemented an interface that can be used to capture human behavior
 
+# Our report
+[Report](https://github.com/ruoyuGao/Genshin_auto_harvesting/blob/main/Blog.md)
