@@ -66,10 +66,8 @@ we transfer the reward from float to int, and calculate the real item number we 
 
 And here is the reward result(one time) for our agent v0.1.1
 <img src="assets/DQN.png" >
-## Discussion
-
 ### Analysis of the results
-
+The result shows that our agent can really learn something. So it is obvious that our agent can get better performance. And we look at one time result, our agent have got the highest reward around 20 episodes. By watching the test process, it is because after 20 episode, the item around our reset point has been collected already. And it is difficult to get item as easy as before. So the performance become worse. However, our agent can still get something after 20 episode too(we watch the whole process that we got item at episode 18,36,55,65,79 and 94).
 ### Future improvement
 
 1. We could expand our dataset to improve the robustness of our model.
