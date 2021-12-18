@@ -10,7 +10,7 @@ In this game, different resources should be collected to upgrade your characters
 
 ## Implementation
 
-### version 1.0
+### version 0.0
 
 In the first implementation, we choose our model to be DQN. We defined our environment to be the following:
 
@@ -25,7 +25,7 @@ For each action, we keep pressing the relevant key for one second. After each ac
 1. The character may enter into states that cannot be solved by the defined actions. For example, the character might encounter enemies in the environment, and can only be resolved with a fight.
 1. The training process has hardly any improvement. We suspect the reason is because directly inputting the entire 1920X1080 picture into the DQN.
 
-### version 2.0
+### version 0.1
 
 1. To deal with the case that the character facing events that are not relevant to the scope of this project, we set a finite number of time steps. After countering undesired events, the environment would be reset after reaching the maximum time step.
 
@@ -44,7 +44,7 @@ For each action, we keep pressing the relevant key for one second. After each ac
 
 1. It is common that there is no available object to be collected in the view of the character. In this case, since YoloX returns nothing except the coordinate of the character to the DQN, it is impossible for the DQN to tell which direction to go, so this would result in a random action that might keep the character to wander around the same field. [demo]
 
-### version 2.1
+### version 0.1.1
 
 1. When the YoloX loses trace of the character, we continue stepping forward with small steps until the character can be detected by YoloX.
 
@@ -58,15 +58,14 @@ AS a result, we defined our environment to be the following:
 - reset: when it reaches some number of steps (hyperparameter).
 
 ## Results
+we transfer the reward from float to int, and calculate the real item number we get by human, we run these algorithm 10 times (each time:100 episodes and each episodes with 50 timesteps-- about 1.5 hour).Here is the comparison between the comparison of the harvesting of:
+|agent |avg_reward |real reward|
+| ------|:---:  |  :---:   |
+|random |55  |4 |
+|v0.1.1|310  |10 |
 
-Here is the comparison between the comparison of the harvesting of:
-
-1. human
-1. version 1.0
-1. version 2.0
-1. version 2.1
+And here is the reward result(one time) for our agent v0.1.1
 <img src="assets/DQN.png" >
-
 ## Discussion
 
 ### Analysis of the results
