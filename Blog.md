@@ -65,7 +65,7 @@ Here is the comparison between the comparison of the harvesting of:
 1. version 1.0
 1. version 2.0
 1. version 2.1
-
+<img src="assets/DQN.png" >
 ## Discussion
 
 ### Analysis of the results
