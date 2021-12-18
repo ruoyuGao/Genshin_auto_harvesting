@@ -16,7 +16,8 @@ In the first implementation, we choose our model to be DQN. We defined our envir
 
 - states: realtime image from the game.
 - action: going forward, leftward, rightward, and downward.
-- reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0). [figure]
+- reward: inverse of the relative distance on the screen of the character with respect with the nearest target (if there is no target found, the reward is 0). 
+<!-- [figure] -->
 
 For each action, we keep pressing the relevant key for one second. After each action is applied to the environment, we always press 'F', which would harvest if there is an item at the current location and do nothing if there is no item.  
 
@@ -38,11 +39,14 @@ For each action, we keep pressing the relevant key for one second. After each ac
 
 #### Problems
 
-1. Sometimes the YoloX would lose trace of the character because there could be bushes that blocks the view. [figure]
+1. Sometimes the YoloX would lose trace of the character because there could be bushes that blocks the view. 
+<!-- [figure] -->
 
-1. The accuracy of YoloX is low. [figure]
+1. The accuracy of YoloX is low.
+ <!-- [figure] -->
 
-1. It is common that there is no available object to be collected in the view of the character. In this case, since YoloX returns nothing except the coordinate of the character to the DQN, it is impossible for the DQN to tell which direction to go, so this would result in a random action that might keep the character to wander around the same field. [demo]
+1. It is common that there is no available object to be collected in the view of the character. In this case, since YoloX returns nothing except the coordinate of the character to the DQN, it is impossible for the DQN to tell which direction to go, so this would result in a random action that might keep the character to wander around the same field. 
+<!-- [demo] -->
 
 ### version 0.1.1
 
@@ -58,6 +62,7 @@ AS a result, we defined our environment to be the following:
 - reset: when it reaches some number of steps (hyperparameter).
 
 ## Results
+
 we transfer the reward from float to int, and calculate the real item number we get by human, we run these algorithm 10 times (each time:100 episodes and each episodes with 50 timesteps-- about 1.5 hour).Here is the comparison between the comparison of the harvesting of:
 |agent |avg_reward |real reward|
 | ------|:---:  |  :---:   |
@@ -66,8 +71,11 @@ we transfer the reward from float to int, and calculate the real item number we 
 
 And here is the reward result(one time) for our agent v0.1.1
 <img src="assets/DQN.png" >
+
 ### Analysis of the results
+
 The result shows that our agent can really learn something. So it is obvious that our agent can get better performance. And we look at one time result, our agent have got the highest reward around 20 episodes. By watching the test process, it is because after 20 episode, the item around our reset point has been collected already. And it is difficult to get item as easy as before. So the performance become worse. However, our agent can still get something after 20 episode too(we watch the whole process that we got item at episode 18,36,55,65,79 and 94).
+
 ### Future improvement
 
 1. We could expand our dataset to improve the robustness of our model.
