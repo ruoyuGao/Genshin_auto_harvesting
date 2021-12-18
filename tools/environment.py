@@ -32,7 +32,7 @@ class Environment:
         player_pos,item_pos=self.state
         if item_pos == 0:
             return 0
-        return 1/abs(player_pos.int()-item_pos.int())
+        return abs(player_pos.int()-item_pos.int())
 
     def get_state(self):
         while True:
@@ -81,7 +81,7 @@ class Environment:
         min_distance=self.distance()
         if min_distance ==0:
             return 0
-        return 1/min_distance
+        return 500/min_distance
 
     def go_straight(self,time1):
         pyautogui.keyDown('w')
